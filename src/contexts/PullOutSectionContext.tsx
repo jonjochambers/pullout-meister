@@ -10,18 +10,36 @@ type PullOutSectionContextType = UsePullOutSectionHook & {
 const PullOutSectionContext = createContext<PullOutSectionContextType>({
   isOpen: false,
   getId: () => "",
+  getOrigin: () => "left",
   openSection: () => void {},
-  closeSection: () => void {}
+  closeSection: () => void {},
+  register: () => void {},
+  unregister: () => void {}
 });
 
 export const PullOutSectionProvider: FC<{ sectionId: string }> = ({
   sectionId,
   children
 }) => {
-  const { getId, openSection, closeSection } = usePullOutSection(sectionId);
+  const {
+    getId,
+    getOrigin,
+    openSection,
+    closeSection,
+    register,
+    unregister
+  } = usePullOutSection(sectionId);
   return (
     <PullOutSectionContext.Provider
-      value={{ isOpen: false, getId, openSection, closeSection }}
+      value={{
+        isOpen: false,
+        getId,
+        getOrigin,
+        openSection,
+        closeSection,
+        register,
+        unregister
+      }}
     >
       {children}
     </PullOutSectionContext.Provider>
