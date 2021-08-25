@@ -29,10 +29,7 @@ const PullOuts: FC = ({ children }) => {
           <button onClick={() => close("test_1")}>Close all</button>
         </PullOut.Header>
         <PullOut.Section
-          origin="left"
-          pullOutId="test_1"
           sectionId="left_1"
-          open={state["test_1"]?.["left_1"] || false}
           width={50}
         >
           <h1>This is just a test</h1>
@@ -42,10 +39,7 @@ const PullOuts: FC = ({ children }) => {
           </pre>
         </PullOut.Section>
         <PullOut.Section
-          origin="left"
-          pullOutId="test_1"
           sectionId="left_2"
-          open={state["test_1"]?.["left_2"] || false}
           width={50}
         >
           <h1>Just another test</h1>
@@ -60,10 +54,7 @@ const PullOuts: FC = ({ children }) => {
       </PullOut>
       <PullOut pullOutId="test_2" origin="right">
         <PullOut.Section
-          origin="right"
-          pullOutId="test_2"
           sectionId="right_1"
-          open={state["test_2"]?.["right_1"] || false}
           width={50}
         >
           <h1>This is just a test</h1>
@@ -80,10 +71,7 @@ const PullOuts: FC = ({ children }) => {
           </pre>
         </PullOut.Section>
         <PullOut.Section
-          origin="right"
-          pullOutId="test_2"
           sectionId="right_2"
-          open={state["test_2"]?.["right_2"] || false}
           width={50}
         >
           <h1>Just another test</h1>
@@ -98,10 +86,7 @@ const PullOuts: FC = ({ children }) => {
       </PullOut>
       <PullOut pullOutId="test_3" origin="top">
         <PullOut.Section
-          origin="top"
-          pullOutId="test_3"
           sectionId="top_1"
-          open={state["test_3"]?.["top_1"] || false}
           height={25}
         >
           <h1>This is just a test</h1>
@@ -115,10 +100,7 @@ const PullOuts: FC = ({ children }) => {
           <button onClick={() => close("test_3")}>Close all</button>
         </PullOut.Section>
         <PullOut.Section
-          origin="top"
-          pullOutId="test_3"
           sectionId="top_2"
-          open={state["test_3"]?.["top_2"] || false}
           height={50}
         >
           <h1>Just another test</h1>
@@ -130,10 +112,7 @@ const PullOuts: FC = ({ children }) => {
       </PullOut>
       <PullOut pullOutId="test_4" origin="bottom">
         <PullOut.Section
-          origin="bottom"
-          pullOutId="test_4"
           sectionId="bottom_1"
-          open={state["test_4"]?.["bottom_1"] || false}
           height={25}
         >
           <h1>This is just a test</h1>
@@ -147,10 +126,7 @@ const PullOuts: FC = ({ children }) => {
           <button onClick={() => close("test_4")}>Close all</button>
         </PullOut.Section>
         <PullOut.Section
-          origin="bottom"
-          pullOutId="test_4"
           sectionId="bottom_2"
-          open={state["test_4"]?.["bottom_2"] || false}
           height={25}
         >
           <h1>Just another test</h1>

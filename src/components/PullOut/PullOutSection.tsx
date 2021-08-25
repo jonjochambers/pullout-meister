@@ -4,7 +4,7 @@ import { usePullOutSection } from "../../hooks";
 import { Origin } from "../../types";
 export interface PullOutSectionProps {
   sectionId: string;
-  open: boolean;
+  open?: boolean;
   width?: number;
   height?: number;
 }
@@ -53,6 +53,10 @@ const PullOutSection: FC<PullOutSectionProps> = ({
       {children}
     </PullOutDrawer>
   );
+};
+
+PullOutSection.defaultProps={
+  open: false
 };
 
 export default PullOutSection;
