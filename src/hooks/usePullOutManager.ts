@@ -1,12 +1,12 @@
 import { useReducer } from "react";
 import { Origin } from "../types";
 
-type PullOutSectionState = {
+export type PullOutSectionState = {
   open: boolean,
   width?: number
 }
 
-type PullOutState = { origin: Origin } & {
+export type PullOutState = { origin: Origin } & {
   [sectionId: string]: PullOutSectionState;
 }
 
