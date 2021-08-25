@@ -2,6 +2,7 @@ import { createContext, FC } from "react";
 import usePullOutManager, {
   UsePullOutManagerHook
 } from "../hooks/usePullOutManager";
+import { PullOutState } from "../hooks";
 
 /**
  * @description PullOutManager context type definition
@@ -17,7 +18,7 @@ type PullOutManagerContextType = UsePullOutManagerHook & {};
 const PullOutManagerContext = createContext<PullOutManagerContextType>({
   state: {},
   getPullOutIds: () => [],
-  getPullOut: () => ({ origin: "left" }),
+  getPullOut: () => ({} as PullOutState),
   open: () => void {},
   close: () => void {},
   closeAll: () => void {},
