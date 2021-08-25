@@ -5,15 +5,15 @@
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
-    "@types/styled-components": "5.1.10",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-scripts": "4.0.0",
-    "styled-components": "5.3.0"
+    "react-scripts": "4.0.3",
+    "styled-components": "5.3.1"
   },
   "devDependencies": {
-    "@types/react": "17.0.0",
-    "@types/react-dom": "17.0.0",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.12",
     "typescript": "^4.3.5"
   },
   "scripts": {
@@ -27,5 +27,12 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
 }

@@ -1,15 +1,17 @@
 import { useContext, useState } from "react";
 import PullOutManagerContext from "../contexts/PullOutManagerContext";
+import { Origin } from "../types";
 
 export type UsePullOutHook = {
   getId: () => string;
   getSectionIds: () => string[];
+  getOrigin: () => Origin;
   open: () => void;
   openSections: (...args: (string | number)[]) => void;
   close: () => void;
   closeSections: (...sectionIds: string[]) => void;
-  register: () => void;
-  unregister: () => void;
+  register: (...sections: (string|boolean)[]) => void;
+  unregister: (...sections: string[]) => void;
 };
 
 const usePullOut: (pullOutId: string) => UsePullOutHook = (pullOutId) => {
@@ -32,6 +34,11 @@ const usePullOut: (pullOutId: string) => UsePullOutHook = (pullOutId) => {
    * @description Get section ids for pullout
    */
   const getSectionIds = () => Object.keys(getPullOut(id));
+
+  /**
+   * @description Get the origin of the pullout
+   */
+  const getOrigin = () => getPullOut(id).origin;
 
   /**
    * @description Open all sections of pullout at default widths
@@ -72,14 +79,28 @@ const usePullOut: (pullOutId: string) => UsePullOutHook = (pullOutId) => {
   /**
    * @description Register pullout with manager
    * @param pullOutId Id of the pull out to register with the manager
+   * @param sections Sections ids to register to pullout (and optional open state)
+   * @example <caption>Register just this pullout</caption>
+   * register();
+   * @example <caption>Register sections with this pullout</caption>
+   * register('po-1_s-1',true,'po-1_s-2');
    */
-  const register = () => managerRegister(id);
+  const register = (...sections: (string|boolean)[]) => managerRegister(id, ...sections);
 
-  const unregister = () => managerUnregister(id);
+  /**
+   * 
+   * @param sections Sections to unregister from the pullout
+   * @example <caption>Unregister the pullout</caption>
+   * unregister();
+   * @example <caption>Unregister sections in the pullout</caption>
+   * unregister('po-1_s-2','po-1_s-3');
+   */
+  const unregister = (...sections: string[]) => managerUnregister(id, ...sections);
 
   return {
     getId,
     getSectionIds,
+    getOrigin,
     open,
     openSections,
     close,

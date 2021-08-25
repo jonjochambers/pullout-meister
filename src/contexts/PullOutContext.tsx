@@ -1,5 +1,6 @@
 import { createContext, FC } from "react";
 import usePullOut, { UsePullOutHook } from "../hooks/usePullOut";
+import { Origin } from '../types';
 
 type PullOutContextType = UsePullOutHook & {
   isOpen: boolean;
@@ -9,6 +10,7 @@ const PullOutContext = createContext<PullOutContextType>({
   isOpen: false,
   getId: () => "",
   getSectionIds: () => [],
+  getOrigin: () => 'left',
   open: () => void {},
   openSections: () => void {},
   close: () => void {},
@@ -24,6 +26,7 @@ export const PullOutProvider: FC<{ pullOutId: string }> = ({
   const {
     getId,
     getSectionIds,
+    getOrigin,
     open,
     openSections,
     close,
@@ -37,6 +40,7 @@ export const PullOutProvider: FC<{ pullOutId: string }> = ({
         isOpen: false,
         getId,
         getSectionIds,
+        getOrigin,
         open,
         openSections,
         close,

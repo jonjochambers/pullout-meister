@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Origin } from "./PullOut";
+import { Origin } from "../../types";
 
 interface PullOutAsideProps {
   pullOutId: string;

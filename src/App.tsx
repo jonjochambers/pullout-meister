@@ -1,7 +1,7 @@
 import "./styles.css";
-import { PullOutManagerProvider } from "./contexts/PullOutManagerContext";
-import POM from "./components/PullOut/PullOutMeister";
-import PullOuts from "./components/PullOut/PullOuts";
+import { PullOutManagerProvider } from "./contexts";
+// import POM from "./components/PullOut/PullOutMeister";
+// import PullOuts from "./components/PullOut/PullOuts";
 
 export default function App() {
   return (
@@ -9,8 +9,8 @@ export default function App() {
       <div className="App">
         <h1>PullOut Test</h1>
         <h2>A complete and reasonably dynamic pullout component and context</h2>
-        <PullOuts />
-        <POM />
+        {/* <PullOuts />
+        <POM /> */}
       </div>
     </PullOutManagerProvider>
   );

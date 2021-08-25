@@ -1,11 +1,12 @@
 import { useReducer } from "react";
+import { Origin } from "../types";
 
 type PullOutSectionState = {
   open: boolean,
   width?: number
 }
 
-type PullOutState = {
+type PullOutState = { origin: Origin } & {
   [sectionId: string]: PullOutSectionState;
 }
 
@@ -20,7 +21,7 @@ export type UsePullOutManagerHook = {
   open: (pullOutId: string, ...sections: (string | number)[]) => void;
   close: (pullOutId: string, ...sections: string[]) => void;
   closeAll: () => void;
-  register: (pullOutId: string, ...sections: (string|boolean)[]) => void;
+  register: (pullOutId: string, ...sections: (string | boolean)[]) => void;
   unregister: (pullOutId: string, ...sections: string[]) => void;
 };
 
@@ -30,11 +31,11 @@ export type PullOutManagerReducerPayload = {
     open?: boolean;
     width?: number;
   }[]
-}
+};
 
-const actions = ['register','unregister','open','close','toggle'] as const;
+const actions = ['register', 'unregister', 'open', 'close', 'toggle'] as const;
 type Actions = typeof actions[number];
-const components = ['pullout','section'] as const;
+const components = ['pullout', 'section'] as const;
 type Components = typeof components[number];
 type ComponentActionTypes = `${Components}_${Actions}`;
 
@@ -43,8 +44,8 @@ export type PullOutManagerReducerAction = {
   payload: PullOutManagerReducerPayload
 }
 
-const PullOutManagerReducer = (state: PullOutManagerState, {type,payload}: PullOutManagerReducerAction) => {
-  switch(type) {
+const PullOutManagerReducer = (state: PullOutManagerState, { type, payload }: PullOutManagerReducerAction) => {
+  switch (type) {
     case 'pullout_register':
     case 'pullout_unregister':
     case 'pullout_open':
@@ -64,7 +65,7 @@ const PullOutManagerReducer = (state: PullOutManagerState, {type,payload}: PullO
  * Pull out manager hooks
  */
 const usePullOutManager: () => UsePullOutManagerHook = () => {
-  const [state,dispatch] = useReducer<typeof PullOutManagerReducer>(PullOutManagerReducer,{})
+  const [state, dispatch] = useReducer<typeof PullOutManagerReducer>(PullOutManagerReducer, {})
 
   /**
    * @description Get all pull out ids available
@@ -83,7 +84,7 @@ const usePullOutManager: () => UsePullOutManagerHook = () => {
    */
   const getPullOut = (pullOutId: string) => {
     const output = state[pullOutId];
-    if(!output) throw new Error(`No pullout with id '${pullOutId}' found`);
+    if (!output) throw new Error(`No pullout with id '${pullOutId}' found`);
     return output;
   };
 
@@ -111,12 +112,12 @@ const usePullOutManager: () => UsePullOutManagerHook = () => {
    * @example <caption>Close section with id of pullout</caption>
    * close('po-1','po-1_s-2');
    */
-  const close = (pullOutId: string, ...sections: string[]) => {};
+  const close = (pullOutId: string, ...sections: string[]) => { };
 
   /**
    * @description Close all pullouts
    */
-  const closeAll = () => {};
+  const closeAll = () => { };
 
   /**
    * 
@@ -129,8 +130,8 @@ const usePullOutManager: () => UsePullOutManagerHook = () => {
    * @example <caption>Register sections with one defaulting to open</caption>
    * register('po-1','po-1_s-1', true, 'po-1_s-2');
    */
-  const register = (pullOutId: string, ...sections: (string|boolean)[]) => {
-    
+  const register = (pullOutId: string, ...sections: (string | boolean)[]) => {
+
   };
 
   /**
@@ -148,7 +149,7 @@ const usePullOutManager: () => UsePullOutManagerHook = () => {
    * unregister('po-1','po-1_s-1','po-1_s-2');
    */
   const unregister = (pullOutId: string, ...sections: string[]) => {
-    
+
   };
 
   return {
