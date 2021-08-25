@@ -1,9 +1,7 @@
 import { FC, useEffect } from "react";
 import styled from "styled-components";
 import usePullOut from "../../hooks/usePullOut";
-
-const origins = ["left", "right", "top", "bottom"] as const;
-export type Origin = typeof origins[number];
+import { Origin } from "../../types";
 
 export interface PullOutProps {
   pullOutId: string;

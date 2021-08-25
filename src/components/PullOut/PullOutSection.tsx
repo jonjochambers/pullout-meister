@@ -1,20 +1,17 @@
-import React, { FC, useContext, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "styled-components";
-import { PullOutManagerContext } from "../../contexts/PullOutManagerContext";
-import { Origin } from "./PullOut";
-
+import { usePullOutSection } from "../../hooks";
+import { Origin } from "../../types";
 export interface PullOutSectionProps {
-  pullOutId: string;
   sectionId: string;
   open: boolean;
-  origin: Origin;
   width?: number;
   height?: number;
 }
 
 const PullOutDrawer = styled.div<
-  Omit<PullOutSectionProps, "pullOutId" | "sectionId">
->`
+  Omit<PullOutSectionProps, "sectionId"> & { origin: Origin }
+  >`
   z-index: 3;
   width: ${({ origin, open, width }) =>
     ["left", "right"].includes(origin) ? (open ? width || "auto" : 0) : 100}vw;
@@ -39,22 +36,20 @@ const PullOutDrawer = styled.div<
 `;
 
 const PullOutSection: FC<PullOutSectionProps> = ({
-  pullOutId,
   sectionId,
-  origin,
   open,
   width,
   height,
   children
 }) => {
-  const { register } = useContext(PullOutManagerContext);
+  const { register, getOrigin } = usePullOutSection(sectionId);
 
   useEffect(() => {
-    register(pullOutId, sectionId, open);
-  }, []);
+    register(open);
+  });
 
   return (
-    <PullOutDrawer origin={origin} open={open} width={width} height={height}>
+    <PullOutDrawer origin={getOrigin()} open={open} width={width} height={height}>
       {children}
     </PullOutDrawer>
   );

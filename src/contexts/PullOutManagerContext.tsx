@@ -17,7 +17,7 @@ type PullOutManagerContextType = UsePullOutManagerHook & {};
 const PullOutManagerContext = createContext<PullOutManagerContextType>({
   state: {},
   getPullOutIds: () => [],
-  getPullOut: () => ({}),
+  getPullOut: () => ({origin:'left'}),
   open: () => void {},
   close: () => void {},
   closeAll: () => void {},
