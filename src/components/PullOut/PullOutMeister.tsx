@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
-import { PullOutManagerContext } from "../../contexts/PullOutManagerContext";
+import { usePullOutManager } from "../../hooks";
 
 const POMWrapper = styled.div`
   z-index: 10;
@@ -9,7 +8,7 @@ const POMWrapper = styled.div`
 const POMButton = styled.button``;
 
 const POM = () => {
-  const { open } = useContext(PullOutManagerContext);
+  const { open } = usePullOutManager();
 
   const handleOpenLeft = () => {
     open("test_1", "left_1");

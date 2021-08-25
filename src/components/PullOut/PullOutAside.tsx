@@ -20,7 +20,6 @@ const StyledPullOutAside = styled.div<
 `;
 
 const PullOutAside: FC<PullOutAsideProps> = ({
-  pullOutId,
   open,
   origin,
   children
